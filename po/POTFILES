@@ -1,0 +1,7 @@
+data/org.droidian.Settings.desktop.in
+data/org.droidian.Settings.appdata.xml.in
+data/org.droidian.Settings.gschema.xml
+src/window.ui
+src/main.vala
+src/window.vala
+

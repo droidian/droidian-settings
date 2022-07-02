@@ -1,0 +1,62 @@
+using Gtk 4.0;
+using Adw 1;
+
+Gtk.Button encrypt_button {
+  label: _("Enable");
+  sensitive: true;
+
+  clicked => on_encrypt_action_clicked();
+
+  styles ["suggested-action"]
+}
+
+Gtk.Button change_passphrase_button {
+  label: _("Change passphrase");
+  sensitive: true;
+
+  clicked => on_encrypt_action_clicked();
+
+  styles ["suggested-action"]
+}
+
+template DroidianSettingsEncryptionPage : Gtk.Box {
+  orientation: vertical;
+
+  Adw.Clamp {
+    child: Gtk.Box {
+      orientation: vertical;
+      margin-top: 24;
+      margin-bottom: 24;
+      margin-start: 12;
+      margin-end: 12;
+      spacing: 24;
+
+      Gtk.Label {
+        label: _("Keep your data at rest secure by encrypting your device.\n\nThe encryption operation will proceed in background. Once enabled, you can't disable encryption.");
+        wrap: true;
+      }
+
+      Adw.PreferencesGroup encryption_preferences {
+        title: _("Encryption");
+
+        Adw.ActionRow encryption_actionrow {
+          title: _("Unable to determine encryption status.");
+
+          [prefix]
+          Gtk.Box {
+            orientation: horizontal;
+
+            Gtk.Spinner encryption_spinner {
+              spinning: true;
+              visible: false;
+            }
+
+            Gtk.Image encryption_icon {
+              visible: false;
+            }
+          }
+        }
+      }
+    };
+  }
+}

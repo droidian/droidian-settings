@@ -1,0 +1,56 @@
+using Gtk 4.0;
+using Adw 1;
+
+template DroidianSettingsPassphraseDialog : Adw.Window {
+  title: _("Enable encryption");
+
+  Gtk.Box {
+    orientation: vertical;
+
+    Adw.HeaderBar {
+      [start]
+      Gtk.Button encryption_cancel_button {
+        label: _("Cancel");
+      }
+
+      [end]
+      Gtk.Button encryption_apply_button {
+        label: _("Encrypt");
+
+        styles ["suggested-action"]
+      }
+    }
+
+    Gtk.Box {
+      orientation: vertical;
+      margin-top: 24;
+      margin-bottom: 24;
+      margin-start: 12;
+      margin-end: 12;
+      spacing: 24;
+
+      Gtk.Label passphrase_new_label {
+        label: _("Enter a passphrase that will be used to unlock your device.\n\nIt will be asked at every boot.");
+        wrap: true;
+      }
+
+      Gtk.PasswordEntry passphrase_current_entry {
+        placeholder-text: _("Current passphrase");
+        show-peek-icon: true;
+        max-width-chars: 250;
+      }
+
+      Gtk.PasswordEntry passphrase_entry {
+        placeholder-text: _("Passphrase");
+        show-peek-icon: true;
+        max-width-chars: 250;
+      }
+
+      Gtk.PasswordEntry passphrase_confirm_entry {
+        placeholder-text: _("Confirm passphrase");
+        show-peek-icon: true;
+        max-width-chars: 250;
+      }
+    }
+  }
+}

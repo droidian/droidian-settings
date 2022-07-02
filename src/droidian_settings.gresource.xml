@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/droidian/Settings">
+    <file>settings.ui</file>
+    <file>encryption_page.ui</file>
+    <file>encryption_passphrase.ui</file>
+  </gresource>
+</gresources>

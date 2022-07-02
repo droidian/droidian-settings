@@ -1,0 +1,26 @@
+Source: droidian-settings
+Priority: optional
+Maintainer: Eugenio Paolantonio (g7) <eugenio@droidian.org>
+Build-Depends: debhelper-compat (= 13),
+               valac,
+               gettext,
+               libglib2.0-dev,
+               libadwaita-1-dev,
+               libgtk-4-dev,
+               blueprint-compiler,
+               meson (>= 0.53.0),
+               pkg-config,
+Standards-Version: 4.6.1.0
+Section: libs
+Homepage: https://gitlab.com/droidian/droidian-settings
+Vcs-Git: https://github.com/droidian/droidian-settings.git
+Vcs-Browser: https://github.com/droidian/droidian-settings
+Rules-Requires-Root: no
+
+Package: droidian-settings
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Description: Settings application for Droidian
+ This package allows configuring Droidian-specific settings, configure
+ encryption and other things.

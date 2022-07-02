@@ -1,0 +1,78 @@
+using Gtk 4.0;
+using Adw 1;
+
+template DroidianSettingsWindow : Adw.ApplicationWindow {
+  default-width: 800;
+  default-height: 600;
+
+  Adw.Leaflet leaflet {
+    can-navigate-back: false; /* FIXME */
+
+    Gtk.Box setting_box {
+      orientation: vertical;
+
+      Adw.HeaderBar {
+        centering-policy: strict;
+
+        [title]
+        Adw.ViewSwitcherTitle {
+          title: _("Device encryption");
+        }
+
+      }
+
+      Gtk.StackSidebar {
+        width-request: 270;
+        vexpand: true;
+        stack: content_stack;
+      }
+    }
+
+    Adw.LeafletPage {
+      navigatable: false;
+
+      child: Gtk.Separator {};
+    }
+
+    Gtk.Box content_box {
+      orientation: vertical;
+      hexpand: true;
+
+      Adw.HeaderBar {
+        show-start-title-buttons: bind leaflet.folded;
+
+        [title]
+        Adw.ViewSwitcherTitle {
+          /* title: bind content_stack.visible-child-name; */
+          title: _("Device encryption"); /* FIXME */
+        }
+
+        [start]
+        Gtk.Button back_button {
+          /* visible: bind leaflet.folded; */
+          visible: false;
+          valign: center;
+          tooltip-text: _("Back");
+          icon-name: "go-previous-symbolic";
+
+          clicked => on_back_button_clicked ();
+        }
+      }
+
+      Gtk.Stack content_stack {
+        vexpand: true;
+        vhomogeneous: false;
+
+        Gtk.StackPage encryption_stackpage {
+          title: _("Device encryption");
+
+          /* TODO: can we put the encryption page directly here as a child? */
+          child: Adw.Bin encryption_page_bin {};
+        }
+
+        notify::visible-child => on_stack_notify_visible_changed ();
+    }
+  }
+
+}
+
